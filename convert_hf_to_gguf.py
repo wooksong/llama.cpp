@@ -699,6 +699,9 @@ class TextModel(ModelBase):
         if chkhsh == "81212dc7cdb7e0c1074ca62c5aeab0d43c9f52b8a737be7b12a777c953027890":
             # ref: https://huggingface.co/moonshotai/Kimi-K2-Base
             res = "kimi-k2"
+        if chkhsh == "2c934e5e1c8275b75011b9942836389a87eaa1a63116104e52424515e7649c46":
+            # ref: https://huggingface.co/facebook/opt-350m
+            res = "opt"
         if chkhsh == "0ef9807a4087ebef797fc749390439009c3b9eda9ad1a097abbe738f486c01e5":
             # ref: https://huggingface.co/meta-llama/Meta-Llama-3-8B
             res = "llama-bpe"
@@ -2080,6 +2083,15 @@ class ArceeModel(LlamaModel):
             self.gguf_writer.add_rope_scaling_factor(rope_scaling["factor"])
             self.gguf_writer.add_rope_scaling_orig_ctx_len(rope_scaling["original_max_position_embeddings"])
 
+@ModelBase.register("OPTForCausalLM")
+class OPTModel(TextModel):
+    model_arch = gguf.MODEL_ARCH.OPT
+
+    def set_gguf_parameters(self):
+        super().set_gguf_parameters()
+
+    def modify_tensors(self, data_torch: Tensor, name: str, bid: int | None) -> Iterable[tuple[str, Tensor]]:
+        return [(self.map_tensor_name(name), data_torch)]
 
 @ModelBase.register(
     "LlavaForConditionalGeneration", # pixtral

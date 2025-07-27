@@ -132,6 +132,7 @@ models = [
     {"name": "exaone4",          "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/LGAI-EXAONE/EXAONE-4.0-32B", },
 ]
 
+
 # some models are known to be broken upstream, so we will skip them as exceptions
 pre_computed_hashes = [
     # chatglm-bpe has 2 hashes, why?
@@ -146,6 +147,7 @@ pre_computed_hashes = [
     {"name": "falcon-h1", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/tiiuae/Falcon-H1-7B-Base", "chkhsh": "3eda48b4c4dc7de733d1a8b3e3b4a85243dbbf704da2ee9d42c6beced8897896"},
     {"name": "falcon-h1", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/tiiuae/Falcon-H1-34B-Base", "chkhsh": "48f8e02c0359c0bbdd82f26909171fac1c18a457bb47573ed1fe3bbb2c1cfd4b"},
     {"name": "kimi-k2",   "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/moonshotai/Kimi-K2-Base",   "chkhsh": "81212dc7cdb7e0c1074ca62c5aeab0d43c9f52b8a737be7b12a777c953027890"},
+        {"name": "opt",              "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/facebook/opt-350m","chkhsh":"2c934e5e1c8275b75011b9942836389a87eaa1a63116104e52424515e7649c46" },
 ]
 
 
